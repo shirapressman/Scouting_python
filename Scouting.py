@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 from flask import Flask, request
 
-app = Flask(__name__)
-app.config["DEBUG"] = True
+app = Flask(__name__, debug=True)
 
 
 @app.route("/", methods=["GET", "POST"])
