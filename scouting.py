@@ -1,7 +1,7 @@
+#!/usr/bin/env python3
 from flask import Flask, request
 
-app = Flask(__name__)
-app.config["DEBUG"] = True
+app = Flask(__name__, debug=True)
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -15,12 +15,12 @@ def adder_page():
 
         try:
             team = int(request.form["team"])
-        except:
+        except ValueError:
             errors += "<p>{!r} is not a number.</p>\n".format(request.form["team"])
 
         try:
             game = int(request.form["game"])
-        except:
+        except ValueError:
             errors += "<p>{!r} is not a number.</p>\n".format(request.form["game"])
 
 
@@ -29,7 +29,7 @@ def adder_page():
         number = int(request.form["number"])
 
         if team is not None and game is not None and color is not None and number is not None:
-            return '''
+            return f"""
                 <html>
                     <body>
                         <p>Team number {team},</p>
@@ -38,8 +38,8 @@ def adder_page():
                         <p><a href="/">Click here for new game</a>
                     </body>
                 </html>
-            '''.format(team=team, game=game, color=color, number=number)
-    return '''
+            """
+    return f"""
         <html>
             <body>
                 {errors}
@@ -60,5 +60,5 @@ def adder_page():
                 </form>
             </body>
         </html>
-    '''.format(errors=errors)
+    """
 
