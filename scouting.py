@@ -29,7 +29,7 @@ def adder_page():
         number = int(request.form["number"])
 
         if team is not None and game is not None and color is not None and number is not None:
-            return f'''
+            return f"""
                 <html>
                     <body>
                         <p>Team number {team},</p>
@@ -38,8 +38,8 @@ def adder_page():
                         <p><a href="/">Click here for new game</a>
                     </body>
                 </html>
-            '''
-    return f'''
+            """
+    return f"""
         <html>
             <body>
                 {errors}
@@ -60,5 +60,5 @@ def adder_page():
                 </form>
             </body>
         </html>
-    '''
+    """
 
