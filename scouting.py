@@ -15,12 +15,12 @@ def adder_page():
 
         try:
             team = int(request.form["team"])
-        except:
+        except ValueError:
             errors += "<p>{!r} is not a number.</p>\n".format(request.form["team"])
 
         try:
             game = int(request.form["game"])
-        except:
+        except ValueError:
             errors += "<p>{!r} is not a number.</p>\n".format(request.form["game"])
 
 
